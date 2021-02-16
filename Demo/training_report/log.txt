@@ -1,0 +1,71 @@
+(1) Without Hard Negative Mining 
+pos: 600
+neg: 1200
+Training Linear SVM classifier...
+Evaluating classifier on test data ...
+              precision    recall  f1-score   support
+
+           0       0.85      0.87      0.86       237
+           1       0.75      0.72      0.74       130
+
+    accuracy                           0.82       367
+   macro avg       0.80      0.80      0.80       367
+weighted avg       0.82      0.82      0.82       367
+
+(2) With Hard Negative Mining
+(2.1) Retrain SVM
+pos: 600
+neg: top-1200 hardest
+(a) Evaluate on new test data
+              precision    recall  f1-score   support
+
+           0       0.96      0.94      0.95       235
+           1       0.90      0.92      0.91       128
+
+    accuracy                           0.94       363
+   macro avg       0.93      0.93      0.93       363
+weighted avg       0.94      0.94      0.94       363
+
+(b) Evaluate on original test data
+              precision    recall  f1-score   support
+
+           0       1.00      0.02      0.04       237	？很少预测为background
+           1       0.36      1.00      0.53       130	？FP很多
+
+    accuracy                           0.37       367
+   macro avg       0.68      0.51      0.28       367
+weighted avg       0.77      0.37      0.21       367
+
+(2.2) Continue train with SGD
+(a) Evaluate on combined test data
+Evaluating classifier on test data(post-mining) ...
+              precision    recall  f1-score   support
+
+           0       0.84      0.50      0.63       472
+           1       0.47      0.82      0.60       258
+
+    accuracy                           0.62       730
+   macro avg       0.65      0.66      0.61       730
+weighted avg       0.71      0.62      0.62       730
+
+(b) Evaluate on new test data
+Evaluating classifier on test data(post-mining) ...
+              precision    recall  f1-score   support
+
+           0       0.93      0.71      0.81       235
+           1       0.63      0.91      0.75       128
+
+    accuracy                           0.78       363
+   macro avg       0.78      0.81      0.78       363
+weighted avg       0.83      0.78      0.79       363
+
+(c) Evaluate on old test data
+Evaluating classifier on test data(post-mining) ...
+              precision    recall  f1-score   support
+
+           0       0.59      0.05      0.10       237
+           1       0.35      0.93      0.51       130
+
+    accuracy                           0.37       367
+   macro avg       0.47      0.49      0.30       367
+weighted avg       0.51      0.37      0.25       367

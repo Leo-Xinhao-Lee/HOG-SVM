@@ -1,0 +1,2 @@
+Total candidate boxes: 29
+After NMS left: 4
