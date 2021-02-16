@@ -1,4 +1,6 @@
 # Object-detection-via-HOG-SVM
+This code is heavily borrowed from https://github.com/SamPlvs/Object-detection-via-HOG-SVM, and is modified to perform hard negative mining when training and perform testing for the entire INRIAPerson testing set. Note that the result format should be aligned with https://github.com/rafaelpadilla/Object-Detection-Metrics#important-definitions, facilitated by which the measure of AP is done.
+
 This is an application of Object detection using Histogram of Oriented Gradients (HOG) as features and Support Vector Machines (SVM) 
 as the classifier. 
 
