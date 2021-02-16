@@ -129,8 +129,9 @@ else:
     hard_data = np.concatenate(hard_data)   # hard_data: list of vector -> array
     hard_data = hard_data[idx]
     hard_labels = le.fit_transform(hard_labels)
-
-# np.save('./data/hard_data', hard_data)
+    if not os.path.exists('./data'):
+	os.mkdir('./data')
+    np.save('./data/hard_data', hard_data)
 
 print("Total Hard negative: {}".format(hard_labels.shape[0]))   # Total Hard negative: 97043
 retrainData = np.concatenate((posData, hard_data[:1200]))
